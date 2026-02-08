@@ -49,10 +49,10 @@ const sheets = google.sheets({ version: "v4", auth });
 
 // Spreadsheet details
 const SPREADSHEET_ID = process.env.SPREADSHEET_ID;
-const RANGE = "Records!I:I";
+const range = "Form responses 1!A:Z";
 
 console.log("Spreadsheet ID:", SPREADSHEET_ID);
-console.log("Range:", RANGE);
+console.log("Range:", range);
 
 // Categories
 let categoryCounts = {
@@ -74,7 +74,7 @@ export async function fetchCategoryCounts() {
 
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: SPREADSHEET_ID,
-      range: RANGE,
+      range: range,
     });
 
     console.log("Successfully fetched data from Google Sheets");
@@ -114,7 +114,7 @@ export async function getLatestDonors(){
 
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: SPREADSHEET_ID,
-      range: "Copy of Records!A:Z",
+      range: "Form responses 1!A:Z",
     });
     console.log("Successfully fetched data for latest donors");
 
